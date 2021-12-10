@@ -1,69 +1,75 @@
-//CRUD debe ser async await
-
-import {Model} from "mongoose";
+import { Model } from "mongoose";
 
 /**
- * Se encarga de listar en base al modelo (es una promesa)
- * @param {Model} model 
+ * Se encarga de lista en base al model
+ * @param {Model} model
  * @returns {Array}
  */
+// * recordemos que esto es una promesa
+// * recuerden que cuando es una funcion inline el return esta implicito
 export const list = async (model) => await model.find();
 
 /**
- * Se encarga de guardar informacion
+ * Se encarga de guarda informacion
  * @param {Model} model
  * @param {Array<any>} data
  * @returns
  */
 export const store = async (model, data) => {
-    //se crea un dato y retorna la lista completa
-    // await db[table].push(data);
-    // return await list(table);
-
+  //* CREO UN DATO Y RETORNO LA LISTA COMPLETA
+  // await db[table].push(data);
+  // return await list(table);
+  try {
     const object = new model(data);
     object.save();
+
+    return object;
+  } catch (err) {
+    return err;
+  }
 };
 
-/**
- * Funcion para buscar un usuario
- * @param {{model: Model, key: string, value: string}} parametros
- */
-export const find = async ({model, key = "_id", value}) => {
-    try {
-        return await model.findOne({[`${key}`]: value});
-    } catch (error) {
-        return false;
-    }
+// Porque esto puede por id o por cualquier paremetro
+// esta la opciones de poner multiples parametros
+// por default yo quiro el key = _id
+// la destructuracion es recomendable cuando tengamos mas de 2 parametros
+export const findBy = async ({ model, key = "_id", value }) => {
+  try {
+    const object = await model.findOne({ [`${key}`]: value });
+    console.log("object", object);
+    return object;
+  } catch (err) {
+    console.log("err", err.message);
+    return err.message;
+  }
 };
 
 /**
  * Funcion para actualizar
- * @param {{model: Model, id: string, data: Array}} parametros
+ * @param {{model: Model, id: string, data: Object}} parametros
  * @returns {Array?}
  */
-export const upsert = async ({model, id, data}) => {
-    try {
-        //data es un objeto que tiene las columnas del modelo
-        await model.findByIdAndUpdate(id, data);
-        return await list(model);
-
-    } catch (error) {
-        return false;
-    }
-
+export const upsert = async ({ model, id, data }) => {
+  try {
+    // data es un objeto que tiene las columnas del modelo
+    await model.findByIdAndUpdate(id, data);
+    return await list(model);
+  } catch (err) {
+    return false;
+  }
 };
 
 /**
-    * Funcion para eliminar datos
-    * @param {Model} model
-    * @param {String} id
-    */
+ *
+ * @param {Model} model
+ * @param {String} id
+ */
 export const remove = async (model, id) => {
-    try {
-        await model.findByIdAndRemove(id);
-        //retorna la lista del modelo
-        return await list(model);
-    } catch (err) {
-        return false;
-    }
+  try {
+    await model.findByIdAndRemove(id);
+    // para que retorne hacemos que retorne la lista del modelo
+    return await list(model);
+  } catch (err) {
+    return false;
+  }
 };

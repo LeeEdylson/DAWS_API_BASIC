@@ -11,7 +11,7 @@
 	"eslint": "eslint .",
     "eslint:fix": "eslint . --fix"
   },
-  "author": "Jamutaq Ortega",
+  "author": "Lee Tipismana",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.15.5",
