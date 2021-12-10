@@ -8,7 +8,7 @@
     "dev": "nodemon --exec npm run babel-node ./api/index.js",
     "start": "nodemon --exec babel-node ./api/index.js",
     "test": "jest",
-	"eslint": "eslint .",
+    "eslint": "eslint .",
     "eslint:fix": "eslint . --fix"
   },
   "author": "Lee Tipismana",
@@ -19,6 +19,7 @@
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.7",

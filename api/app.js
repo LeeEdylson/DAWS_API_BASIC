@@ -1,4 +1,5 @@
 import express from "express";
+var cors = require('cors');
 import userRouter from "./components/user";
 import storyRouter from "./components/story";
 import commentRouter from "./components/comments";
@@ -20,6 +21,7 @@ connect(db_url);
 //*cargar la carpeta public
 app.use(express.static(__dirname + "/public")); //static es todo lo que esta en public
 
+app.use(cors());
 //*connection, es la palabra reservada la cual se encarga de 
 //encender la conexion entre mi cliente y mi servidor
 //al momento de crear esta conexion, el servidor es comunicado que
