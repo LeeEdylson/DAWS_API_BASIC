@@ -1,5 +1,5 @@
 import { sign } from "../../../auth";
-import { store, findBy } from "../../../store/dummy";
+import { store, find } from "../../../store/dummy";
 import { response } from "../../../network";
 import { hash, compare } from "../../../helper/encrypt";
 import userModel from "../user/model";
@@ -21,7 +21,8 @@ export const login = async (req, res) => {
     console.log("email", user.email);
 
     //? primer debo buscar a mi usario
-    const userData = await userModel.findOne({ email: user.email });
+    
+    const userData = await find({model: userModel, key: "email", value: user.email});
     console.log("userData", userData);
     //? luego debo ver si existe
     // if (!userData) return;

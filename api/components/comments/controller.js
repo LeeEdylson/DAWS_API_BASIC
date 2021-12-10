@@ -18,7 +18,7 @@ export const save = async (body) => {
 export const show = async (req, res) => {
     const {id} = req.params;
 
-    const comment = await find(commentModel, "id", id);
+    const comment = await find({model: commentModel,key: "id",value: id});
 
     return response({res, data: comment});
 };

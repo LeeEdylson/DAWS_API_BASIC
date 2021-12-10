@@ -16,7 +16,7 @@ export const show = async (req, res) => {
     //find siempre va a recibir 3 cosas, (el modelo, el key y el value)
     //por mas que el key x default sea _id, igual se debe poner
     //para ahcer eso, se debe usar la destructuracion
-    const user = await find({ value: id, model: userModel });
+    const comment = await find({model: userModel,key: "id",value: id});
 
     if (!user) {
         response({
