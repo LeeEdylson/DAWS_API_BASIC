@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding: 0;
+		box-sizing: border-box;
+		text-transform: capitalize;
+		font-family: verdana;
+		border: none;
+		outline: none;
+		letter-spacing: 2px;
+	}
+
+	body{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+	}
+
+	.containter{
+		width: 500px;
+		text-align: right;
+	}
+
+	.box-container{
+		height: 20;
+		width: 100%;
+		background: #444;
+		box-shadow: 0 5px 15px #111;
+		border-radius: 5px;
+		padding: 15px;
+	}
+
+	.box-container .box{
+		height: 80%;
+		width: 100%;
+		border-radius: 5px;
+		padding: 10px;
+		background: #f8f8f8;
+		overflow-y: auto;
+		text-align: left;
+		font-size: 10px;
+	}
+
+	#input{
+		width: 100%;
+		height: 40px;
+		background: none;
+		font-size: 15px;
+		color: rgb(0, 0, 0);
+		border-bottom: 1px solid rgb(64, 134, 226);
+	}
+
+	#autor{
+		height: 40px;
+		background: none;
+		font-size: 15px;
+		color: rgb(0, 0, 0);
+		border-bottom: 1px solid rgb(64, 134, 226);
+	}
+
+	#comment{
+		height: 30px;
+		width: 160px;
+		background: #21a6ff;
+		color: pointer;
+		margin: 10px 0;
+		font-size: 15px;
+		border-radius: 15px;
+	}
+
+	#cancel{
+		height: 30px;
+		width: 160px;
+		border: 2px solid #ff0000;		
+		background: transparent;
+		color: pointer;
+		margin: 10px 0;
+		font-size: 15px;
+		border-radius: 15px;
+	}
+
+	#cancel:hover {
+		background-color: #ff0000;
+		color: white;
+	}
+
+	button:hover{
+		opacity: .8;
+	}
+</style>
+
+
+<body>
+	<form action="" class="form-comment">
+		<div class="container mt-5">
+			<h1>Crear comentarios</h1>
+			<br>
+
+			<input type="text" id="autor" name="author" placeholder="Autor" >
+			<input type="text" id="input" name="comment" placeholder="Escribe tu comentario" >
+			<br>
+			<button type="submit" id="comment">Comentar</button>
+			<button type="button" id="cancel">Cancelar</button>
+			
+			<div class="box-container" id="box-container">
+				<table class="box" id="box">
+					<th>ID</th>
+					<th>Comentario</th>
+					<th>Autor</th>
+				</table>
+			</div>
+		</div>
+	</form>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./socket.js"></script>
+</html>

@@ -1,0 +1,33 @@
+{
+  "name": "project_blogtech",
+  "version": "1.0.0",
+  "description": "Proyecto del curso de DAW Avz, blog 2.0",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "dev": "nodemon --exec npm run babel-node ./api/index.js",
+    "start": "nodemon --exec babel-node ./api/index.js",
+    "test": "jest",
+	"eslint": "eslint .",
+    "eslint:fix": "eslint . --fix"
+  },
+  "author": "Jamutaq Ortega",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.7",
+    "nanoid": "^3.1.25",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "jest": "^27.2.0",
+    "supertest": "^6.1.6"
+  }
+}
